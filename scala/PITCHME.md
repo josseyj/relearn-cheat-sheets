@@ -17,15 +17,24 @@
 
 ## Variable Definitions
 
-* ```var name : String = "Abraham"```
-* ```val age : Int = 30``` --> Integer constant
+```scala
+    var name : String = "Abraham"
+    name = "Lincoln" // value can be changed
+```
+```scala
+    val age : Int = 30 // Integer constant
+```
 * Supports type inference
-
+    ```scala
+        var name = "Abraham"
+        val age = 30 // Integer constant
+    ```
 ---
 
 ## Method Deinitions
 
-* ```def add(a : Int, b : Int) : Int = a + b```
+* Method signature and implemention separated by @color[red](**=**)
+```def add(a : Int, b : Int) : Int = a + b```
 * `Unit` is the return type assumed is `=` is not specified. (There is no void keyword)
     * ```scala
         def displayMessage() {
