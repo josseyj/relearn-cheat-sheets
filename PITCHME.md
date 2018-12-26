@@ -1,3 +1,3 @@
 # Cheat Sheets
 
-### [Scala](#?p=scala)
+### [Scala](?p=scala)
