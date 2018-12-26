@@ -18,16 +18,16 @@
 
 ---
 ## Types
-    * Scala is a staticly typed language
-    * Supports type inference
-    * The type is specified after the variable separated by a colon.
-        ```scala
-        var a : Int
-        var names : List[String]
-        def square(a : Int) : Int = a * a
-        ```
-    * @color[red](**Any**) is a catch-all type
-    * @color[red](**Unit**) is the type of a statement
+* Scala is a staticly typed language
+* Supports type inference
+* The type is specified after the variable separated by a colon.
+    ```scala
+    var a : Int
+    var names : List[String]
+    def square(a : Int) : Int = a * a
+    ```
+* @color[red](**Any**) is a catch-all type
+* @color[red](**Unit**) is the type of a statement
 
 ---
 ## Variables
@@ -327,11 +327,20 @@ val x = 4
 
 //Resolve variables
 println(s"Square of $x is ${ x * x }.")
+//Output: Square of 4 is 16.
 
 //Formatting
-println(s"Square of ${x}%08.3f is ${ x * x }.")
-
+println(f"Square of ${x}%05.2f is ${ x * x }%06.2f.")
+//Output: Square of 04.00 is 016.00.
 ```
+### MultiLine String
+```scala
+"""This is a "multi"
+line
+text"""
+```
+
++++
 ### Code Re-writing
 
 * If the scala code does not compile as it is, the compiler rewrites the code. 
