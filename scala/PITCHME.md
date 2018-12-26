@@ -6,7 +6,6 @@
 
 * Scala is a JVM language
 * Too many language features
-* Big learning curve
 * Supports scripting 
     ```bash
     # run the instructions in file
@@ -15,9 +14,22 @@
 * Object Oriented
 * Statically Typed
 * Enables DSLs
+* @color[red](**_**) is a keyword and has many meanings
 
 ---
+## Types
+    * Scala is a staticly typed language
+    * Supports type inference
+    * The type is specified after the variable separated by a colon.
+        ```scala
+        var a : Int
+        var names : List[String]
+        def square(a : Int) : Int = a * a
+        ```
+    * @color[red](**Any**) is a catch-all type
+    * @color[red](**Unit**) is the type of a statement
 
+---
 ## Variables
 
 * @color[red](**var**) and @color[red](**val**) are ways to define variables and constants
@@ -33,7 +45,6 @@
         val age = 30 // Integer constant
     ```
 ---
-
 ## Methods
 
 * Method signature and implemention separated by @color[red](**=**)
@@ -46,9 +57,47 @@
             println("Hello World!")
         }
     ```
++++
+### Variable Arguments
+* Scala supports variable arguments
+    ```scala
+    def addAll(first : Int, rest : Int*) : Int = 
+        first + rest.reduce(_ + _)
+    
+    addAll(2, 4, 5, 7) // Result: 18
+    ```
+* The var-arg argument can be treated as an array
+* Passing an array to var-arg
+    ```scala
+    val nums = Array(1, 2, 3)
+    addAll(1, nums:_*) //result 7
+    //addAll(1, nums) - won't compile
+    ```
+
++++
+### Named Arguments
+* Scala supports named arguements
+    ```scala
+    def divide(divident : Int, divisor : Int) : Int =
+        divident / divisor
+
+    divide(6, 2) // Result: 3
+    divide(divisor = 2, divident = 6) // Result: 3
+    ```
+
++++ 
+### Method Overloading
+* Scala supports Method Overloading
+### Operator Overloading
+* Scala does not support operator overloading
+* But scala supports symbolic method names
+    ```scala
+    def +=(a : Int): Unit = {
+        this.age += a
+    }
+    ```
 
 ---
-
 ## Control Flows
 
 * @color[red](**if**) - an expression
@@ -175,7 +224,6 @@
         * scala.collection.mutable.Set
 
 ---
-
 ## Error Handling
 
 * @color[red](**try**) ... @color[red](**catch**) ... @color[red](**finally**)
@@ -198,7 +246,6 @@
     ```
 
 ---
-
 ## Classes and Objects
 
 * ```scala
@@ -207,6 +254,15 @@
     val p = new Person("George")
   ```
 * All fields are public by default (there is no public key word)
+
++++
+### Inheritance
+
+* TODO
+
+### Interfaces
+
+* TODO
 
 +++
 
@@ -227,11 +283,55 @@
 
     val p = Person("George")
   ```
+---
+## Functional Programming
+* Functions are objects
+* Supports higher order functions
+```scala
+def addMethod(a : Int, b : Int) : Int = a + b
+val addFunction1 : (Int, Int) => Int = (a, b) => a + b
+
+//placeholder syntax
+val addFunction2 : (Int, Int) => Int =  = _ + _
+```
++++
+### Partially Applied Functions
+* Placeholder can be used to create partial functions from other functions
+    ```scala
+    val multiply : (Int, Int) => Int = _ * _
+    val twice = multiply(2, _)
+    val thrice = multiply(_, 3)
+    ```
++++
+### Partial Functions
+* Different from Partially Applied Functions.
+* @color[red](**PartialFunction[T, R]**) extends from Function[T, R]
+* They might not return a result always
+* They start with a @color[red](**case**) statement after the @color[green](**{**).
+    ```scala
+    val squareRoot : (Int) => Double = {
+        case x : Int if x > 0 => scala.math.sqrt(x)
+    }
+
+    squareRoot(4) //Result: 2
+    squareRoot(-4) //Result: MatchError
+    ```
+* @color[red](**match**) and @color[red](**catch**) uses @color[red](**PartialFunction**)
+
 
 ---
+## Unique Language Features
+### String Interpolation
+```scala
+val x = 4
 
-## Language Features
+//Resolve variables
+println(s"Square of $x is ${ x * x }.")
 
+//Formatting
+println(s"Square of ${x}%08.3f is ${ x * x }.")
+
+```
 ### Code Re-writing
 
 * If the scala code does not compile as it is, the compiler rewrites the code. 
