@@ -77,33 +77,27 @@
 
 
 ---
-
 ## Collections
-
 * Array
     * values a mutable
     * length is fixed
     * Uses the java array implementation
-    * ```scala
+      ```scala
         val nums = Array(1, 2, 3)
-        nums(1) = 4
+        nums(1) = 4 // Array(1, 4, 3)
       ```
-      Output: Array(1, 4, 3)
     * Insert at head
       ```scala
-        nums :+ 5
+        nums :+ 5 // Array(1, 4, 3, 5)
       ```
-      Output: Array(1, 4, 3, 5)
     * Insert at tail
       ```scala
-        5 +: nums
+        5 +: nums // Array(5, 1, 4, 3)
       ```
-      Output: Array(5, 1, 4, 3)
     * Concatnate
       ```scala
-        nums ++ nums
+        nums ++ nums // Array(1, 4, 3, 1, 4, 3)
       ```
-      Output: Array(1, 4, 3, 1, 4, 3)
 
 +++
 
