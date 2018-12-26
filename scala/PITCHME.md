@@ -59,17 +59,21 @@
             i += 1 //i++ won't work - ++ is not deined for Int
         }
       ```
-* `for` with `yield` - is an expression
-    * ```scala 
-        val x = for (i <- 1 to 5) yield 2 * i
+
++++
+
+* `for`  - is an expression
+    * `for` with `yield`
+      ```scala 
+      val x = for (i <- 1 to 5) yield 2 * i
       ``` 
       Output:  `Vector(2, 4, 6, 8, 10)`
 
     * `for` can have multiple 'generators', 'filters', 'assignments'
-        * ```scala
-            for (i <- 1 to 5; j <- 1 to i; k = i * j) yield k
-          ```
-          Output: `Vector(1, 2, 4, 3, 6, 9, 4, 8, 12, 16, 5, 10, 15, 20, 25)`
+        ```scala
+        for (i <- 1 to 5; j <- 1 to i; k = i * j) yield k
+        ```
+        Output: `Vector(1, 2, 4, 3, 6, 9, 4, 8, 12, 16, 5, 10, 15, 20, 25)`
 
 
 ---
