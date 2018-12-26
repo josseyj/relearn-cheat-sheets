@@ -273,6 +273,7 @@
   ```scala
     class Person private (val name: String, val age : Int)
 
+    //Companion Object
     object Person {
 
         def apply(name : String, age : Int) : Person  = new Person(name, age)
@@ -287,13 +288,13 @@
 ## Functional Programming
 * Functions are objects
 * Supports higher order functions
-```scala
-def addMethod(a : Int, b : Int) : Int = a + b
-val addFunction1 : (Int, Int) => Int = (a, b) => a + b
+    ```scala
+    def addMethod(a : Int, b : Int) : Int = a + b
+    val addFunction1 : (Int, Int) => Int = (a, b) => a + b
 
-//placeholder syntax
-val addFunction2 : (Int, Int) => Int =  = _ + _
-```
+    //placeholder syntax
+    val addFunction2 : (Int, Int) => Int =  = _ + _
+    ```
 +++
 ### Partially Applied Functions
 * Placeholder can be used to create partial functions from other functions
