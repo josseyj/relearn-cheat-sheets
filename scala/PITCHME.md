@@ -78,7 +78,6 @@
       ```
 
 +++
-
 * @color[red](**for**)  - is an expression
     * @color[red](**for**) with @color[red](**yield**)
       ```scala 
@@ -87,8 +86,13 @@
       ``` 
     * @color[red](**for**) can have multiple @color[aqua](*generators, filters, assignments*)
         ```scala
-        for (i <- 1 to 5; j <- 1 to i; k = i * j) yield k
-        //Output: Vector(1, 2, 4, 3, 6, 9, 4, 8, 12, 16, 5, 10, 15, 20, 25)
+        for {
+            i <- 1 to 5     // generator
+            j <- 1 to i     // generator
+            k = i * j       // assignment
+            if k % 2 == 0   // filter
+         } yield k
+        //Output: Vector(2, 4, 6, 4, 8, 12, 16, 10, 20)
         ```
 
 ---
@@ -101,10 +105,10 @@
         val nums = Array(1, 2, 3)
         nums(1) = 4 // Array(1, 4, 3)
 
-        //Insert at head
+        //Insert at tail
         nums :+ 5 // Array(1, 4, 3, 5)
 
-        //Insert at tail
+        //Insert at head
         5 +: nums // Array(5, 1, 4, 3)
 
         //concatenation
@@ -114,9 +118,12 @@
 +++
 * @color[red](**List**)
     * Immutable
-    * ```scala
+      ```scala
         val nums = List(1, 2, 3) 
-        nums(0) = 4 // wont compile beause immutable       
+        //nums(0) = 4  wont compile beause immutable       
+
+        //concatenation
+        nums ::: nums // List(1, 4, 3, 1, 4, 3)
       ```
 
 * @color[red](**Vector**)
@@ -124,7 +131,7 @@
       ```scala
         val nums = Vector(1, 2, 3)
       ```
-    * There is immutable and mutable versions
+    * There are immutable and mutable versions
 
 +++
 * Sequences (@color[red](**Seq**))
@@ -133,8 +140,10 @@
         Seq(1, 2, 3) // in turn creates a List
       ```
       ```scala
-        def addAll(nums : Seq[Int]) : Int = nums.reduce((a: Int, b : Int)  => a +b)
+        def addAll(nums : Seq[Int]) : Int = 
+            nums.reduce((a: Int, b : Int)  => a +b)
 
+        //all of the following would compile
         addAll(Array(1, 2, 3))
         addAll(List(1, 2, 3))
         addAll(Vector(1, 2, 3))
@@ -146,6 +155,11 @@
     * By deault `Range` is inclusive
     * ```scala
         val nums : Seq[Int] = 1 to 5
+        //num: Seq[Int] = Range 1 to 5
+
+        //loop and double
+        for (i <- 1 to 3) yield 2 * i
+        //Output: Vector(2, 4, 6)
       ```
 
 +++
@@ -178,6 +192,9 @@
                     println("Division Complete")
                 }
             }
+
+            divide(4, 2) // 2
+            divide(2, 0) // -1
     ```
 
 ---
@@ -221,7 +238,6 @@
 * This enables good support for DSL
 
 +++
-
 * @color[red](**apply**) method
     * If the instance itself is used as a method, the apply method of the instance is used
         ```scala
@@ -230,16 +246,18 @@
         val n = Array(1, 2, 3)
         n(1)    // n.apply(1)
         ```
++++
+* In fix method
+    * If an instance method has only one argument, the `.` and paranthesis can be skiped.
+        ```scala
+        "ABCD" charAt 1 // "ABCD".charAt(1) ----> B
+        a + b // a.+(b)
+        ```
 
-* If an instance method has only one argument, the `.` and paranthesis can be skiped.
-    ```scala
-    "ABCD" charAt 1 // "ABCD".charAt(1) ----> B
-    a + b // a.+(b)
-    ```
-
-* colon (':') ending methods are invoked on the instance on the right.
-    ```scala
-    Nil :+ 1 :+ 2 // Inserts 1 and then 2
-    1 +: 2 +: Nil // Inserts 2 and then 1
-    1 :: 2 :: Nil // Inserts 2 and then 1
-    ```
+* Right associative method
+    * colon (':') ending methods are invoked on the instance on the right.
+        ```scala
+        Nil :+ 1 :+ 2 // Inserts 1 and then 2
+        1 +: 2 +: Nil // Inserts 2 and then 1
+        1 :: 2 :: Nil // Inserts 2 and then 1
+        ```
