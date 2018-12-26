@@ -8,7 +8,10 @@
 * Too many language features
 * Big learning curve
 * Supports scripting 
-    * scala `filename.sc` --> run the instructions in file
+    ```bash
+    # run the instructions in file
+    scala `filename.sc`
+    ```
 * Object Oriented
 * Statically Typed
 * Enables DSLs
@@ -17,11 +20,11 @@
 
 ## Variables
 
-* ```scala
+* @color[red](**var**) and @color[red](**val**) are ways to define variables and constants
+    ```scala
         var name : String = "Abraham"
         name = "Lincoln" // value can be changed
-    ```
-* ```scala
+
         val age : Int = 30 // Integer constant
     ```
 * Supports type inference
@@ -37,7 +40,7 @@
     ```scala
     def add(a : Int, b : Int) : Int = a + b
     ```
-* `Unit` is the return type assumed is `=` is not specified. (There is no void keyword)
+* @color[red](**Unit**) is the return type assumed is @color[green](**=**) is not specified. (There is no void keyword)
     ```scala
         def displayMessage() {
             println("Hello World!")
@@ -48,10 +51,12 @@
 
 ## Control Flows
 
-* `if` - an expression
-    * `val result = if (args.length > 0) args(0) else "default"`
+* @color[red](**if**) - an expression
+    ```scala
+    val result = if (args.length > 0) args(0) else "default"
+    ```
 
-* `match`
+* @color[red](**match**)
     * just like switch in java
     * ```scala
         val result = args(0) match {
@@ -62,65 +67,59 @@
       ```
 +++
 
-* `while` - is a statement with return type `Unit`
+* @color[red](**while**) - is a statement with return type `Unit`
     * ```scala
         var i = 0
         while (i < 10) {
             println(s"Square if $i is ${i*i}.")
-            i += 1 //i++ won't work - ++ is not deined for Int
+            i += 1 
+            //i++ won't work - ++ is not deined for Int
         }
       ```
 
 +++
 
-* `for`  - is an expression
-    * `for` with `yield`
+* @color[red](**for**)  - is an expression
+    * @color[red](**for**) with @color[red](**yield**)
       ```scala 
       val x = for (i <- 1 to 5) yield 2 * i
+      //Output: Vector(2, 4, 6, 8, 10)
       ``` 
-      Output:  `Vector(2, 4, 6, 8, 10)`
-
-    * `for` can have multiple 'generators', 'filters', 'assignments'
+    * @color[red](**for**) can have multiple @color[aqua](*generators, filters, assignments*)
         ```scala
         for (i <- 1 to 5; j <- 1 to i; k = i * j) yield k
+        //Output: Vector(1, 2, 4, 3, 6, 9, 4, 8, 12, 16, 5, 10, 15, 20, 25)
         ```
-        Output: `Vector(1, 2, 4, 3, 6, 9, 4, 8, 12, 16, 5, 10, 15, 20, 25)`
-
 
 ---
 ## Collections
-* Array
+* @color[red](**Array**)
     * values a mutable
     * length is fixed
     * Uses the java array implementation
       ```scala
         val nums = Array(1, 2, 3)
         nums(1) = 4 // Array(1, 4, 3)
-      ```
-    * Insert at head
-      ```scala
-        nums :+ 5 // Array(1, 4, 3, 5)
-      ```
-    * Insert at tail
-      ```scala
-        5 +: nums // Array(5, 1, 4, 3)
-      ```
 
-+++      
-    * Concatnate
-      ```scala
+        //Insert at head
+        nums :+ 5 // Array(1, 4, 3, 5)
+
+        //Insert at tail
+        5 +: nums // Array(5, 1, 4, 3)
+
+        //concatenation
         nums ++ nums // Array(1, 4, 3, 1, 4, 3)
       ```
 
 +++
-* List
+* @color[red](**List**)
     * Immutable
     * ```scala
-        val nums = List(1, 2, 3)        
+        val nums = List(1, 2, 3) 
+        nums(0) = 4 // wont compile beause immutable       
       ```
-    * ~~nums(0) = 4~~ wont compile beause `List` is immutable
 
-* Vector
+* @color[red](**Vector**)
     * Scala implementation of Array
       ```scala
         val nums = Vector(1, 2, 3)
@@ -128,10 +127,12 @@
     * There is immutable and mutable versions
 
 +++
-* Sequences
+* Sequences (@color[red](**Seq**))
     * Ordered collection includes Array, List and Vector
-    * `Seq(1, 2, 3)` in turn creates a `List`
     * ```scala
+        Seq(1, 2, 3) // in turn creates a List
+      ```
+      ```scala
         def addAll(nums : Seq[Int]) : Int = nums.reduce((a: Int, b : Int)  => a +b)
 
         addAll(Array(1, 2, 3))
@@ -140,7 +141,7 @@
         addAll(Seq(1, 2, 3))
       ```
 +++      
-* Range
+* @color[red](**Range**)
     * Is also a sequence
     * By deault `Range` is inclusive
     * ```scala
@@ -148,13 +149,13 @@
       ```
 
 +++
-* Set
+* @color[red](**Set**)
     * unordered collection of unique items
       ```scala
         val nums = Set(1, 2, 3)
         nums ++ Set(2, 3, 4)
+        //Output: Set(1, 2, 3, 4)
       ```
-      Output: `Set(1, 2, 3, 4)`
     * There are immutable and mutable versions
         * scala.collection.immutable.Set
         * scala.collection.mutable.Set
@@ -163,10 +164,10 @@
 
 ## Error Handling
 
-* `try` ... `catch` ... `finally`
-* `try` ... `catch` is an expression, has return type
-* `finally` does not affect return type
-    * ```scala
+* @color[red](**try**) ... @color[red](**catch**) ... @color[red](**finally**)
+* @color[red](**try**) ... @color[red](**catch**) is an expression, has return type
+* @color[red](**finally**) does not affect return type
+    ```scala
             def divide(a : Int, b : Int) : Int = {
                 try {
                     a / b
@@ -221,7 +222,7 @@
 
 +++
 
-* apply method
+* @color[red](**apply**) method
     * If the instance itself is used as a method, the apply method of the instance is used
         ```scala
         Array(1, 2, 3) // Array.apply(1, 2, 3)
@@ -230,15 +231,15 @@
         n(1)    // n.apply(1)
         ```
 
-    * If an instance method has only one argument, the `.` and paranthesis can be skiped.
-        ```scala
-        "ABCD" charAt 1 // "ABCD".charAt(1) ----> B
-        a + b // a.+(b)
-        ```
+* If an instance method has only one argument, the `.` and paranthesis can be skiped.
+    ```scala
+    "ABCD" charAt 1 // "ABCD".charAt(1) ----> B
+    a + b // a.+(b)
+    ```
 
-    * colon (':') ending methods are invoked on the instance on the right.
-        ```scala
-        Nil :+ 1 :+ 2 // Inserts 1 and then 2
-        1 +: 2 +: Nil // Inserts 2 and then 1
-        1 :: 2 :: Nil // Inserts 2 and then 1
-        ```
+* colon (':') ending methods are invoked on the instance on the right.
+    ```scala
+    Nil :+ 1 :+ 2 // Inserts 1 and then 2
+    1 +: 2 +: Nil // Inserts 2 and then 1
+    1 :: 2 :: Nil // Inserts 2 and then 1
+    ```
