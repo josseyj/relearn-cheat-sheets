@@ -94,13 +94,14 @@
       ```scala
         5 +: nums // Array(5, 1, 4, 3)
       ```
+
++++      
     * Concatnate
       ```scala
         nums ++ nums // Array(1, 4, 3, 1, 4, 3)
       ```
 
 +++
-
 * List
     * Immutable
     * ```scala
@@ -110,13 +111,12 @@
 
 * Vector
     * Scala implementation of Array
-    * ```scala
+      ```scala
         val nums = Vector(1, 2, 3)
       ```
     * There is immutable and mutable versions
-        * scala.collection.immutable.Vector
-        * scala.collection.mutable.Vector
 
++++
 * Sequences
     * Ordered collection includes Array, List and Vector
     * `Seq(1, 2, 3)` in turn creates a `List`
@@ -128,6 +128,7 @@
         addAll(Vector(1, 2, 3))
         addAll(Seq(1, 2, 3))
       ```
++++      
 * Range
     * Is also a sequence
     * By deault `Range` is inclusive
@@ -135,12 +136,10 @@
         val nums : Seq[Int] = 1 to 5
       ```
 
-
 +++
-
 * Set
     * unordered collection of unique items
-    * ```scala
+      ```scala
         val nums = Set(1, 2, 3)
         nums ++ Set(2, 3, 4)
       ```
@@ -185,10 +184,8 @@
 ### Companion Objects
 
 * Can access the private and protected members of the class
-
 * Same Name, Same Package, Same file
-
-* ```scala
+  ```scala
     class Person private (val name: String, val age : Int)
 
     object Person {
@@ -210,6 +207,9 @@
 
 * If the scala code does not compile as it is, the compiler rewrites the code. 
 * This enables good support for DSL
+
++++
+
 * apply method
     * If the instance itself is used as a method, the apply method of the instance is used
         ```scala
