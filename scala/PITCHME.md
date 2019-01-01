@@ -287,19 +287,28 @@
 ---
 ## Functional Programming
 * Functions are objects
-* Supports higher order functions
     ```scala
+    //method
     def addMethod(a : Int, b : Int) : Int = a + b
-    val addFunction1 : (Int, Int) => Int = (a, b) => a + b
 
-    //placeholder syntax
-    val addFunction2 : (Int, Int) => Int =  = _ + _
+    //Function
+    val addFunction1 : (Int, Int) => Int = 
+        (a, b) => a + b
+
+    //Function with placeholder syntax
+    val addFunction2 : (Int, Int) => Int = _ + _
+
     ```
+* Supports higher order functions
+
 +++
 ### Partially Applied Functions
 * Placeholder can be used to create partial functions from other functions
     ```scala
+    //Regular function
     val multiply : (Int, Int) => Int = _ * _
+
+    //Partially applied functions
     val twice = multiply(2, _)
     val thrice = multiply(_, 3)
     ```

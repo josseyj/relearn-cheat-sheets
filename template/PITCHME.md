@@ -1,4 +1,4 @@
-# Scala
+# Title
 
 ---
 
@@ -19,11 +19,14 @@
 
 ## Methods
 
-* 
 
-+++
 ### Variable Arguments
 
+### Named Arguments
+
+### Method Overloading
+
+### Operator Overloading
 ---
 
 ## Control Flows
@@ -42,12 +45,13 @@
 
 ## Classes and Objects
 
-+++
 ### Inheritance
 
-+++
 ### Interfaces
----
 
-## Language Features
+---
+## Functional Programming
+
+---
+## Unique Language Features
 
